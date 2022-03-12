@@ -1,5 +1,3 @@
-package Clases;
-
 import java.util.Iterator;
 
 public class Practica1 {
@@ -14,13 +12,47 @@ public class Practica1 {
 
     // Aqui va tu comentario
     public static void Union(Lista<Integer> lista1,Lista<Integer> lista2) {
+        if( lista1.size()>lista2.size() ){
+            IteradorLista iteraLu = lista1.iteradorLista();
+            while(iteraLu.hasNext()){
+                Integer elemento = (Integer)iteraLu.next();
+            if(lista2.contains(elemento)){
+                lista1.delete(elemento);
+            }
+            }
+            lista1.append(lista2);		    
+        }else{
+            IteradorLista iteraLu = lista2.iteradorLista();
+            while(iteraLu.hasNext()){
+                Integer elemento = (Integer)iteraLu.next();
+                if(lista1.contains(elemento)){
+                    lista2.delete(elemento);
+                }
+            }
+            lista2.append(lista1);	
+        }
          return ;
     }
 
     // Aqui va tu comentario
-    public static void Interseccion(Lista<Integer> lista,Lista<Integer> lista2) {
-        
-        return ;
+    public static void Interseccion(Lista<Integer> lista1,Lista<Integer> lista2) {
+        if( lista1.size()>lista2.size() ){
+            IteradorLista iteraLi = lista1.iteradorLista();
+            while(iteraLi.hasNext()){
+                Integer elemento = (Integer)iteraLi.next();
+                if(lista2.contains(elemento)==false){
+                lista1.delete(elemento);
+                }
+            }
+        }else{
+            IteradorLista iteraLi = lista2.iteradorLista();
+            while(iteraLi.hasNext()){
+                Integer elemento = (Integer)iteraLi.next();
+                if(lista1.contains(elemento)==false){
+                lista2.delete(elemento);
+                }
+            }	    
+        }
     }
 
 

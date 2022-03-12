@@ -287,6 +287,7 @@ public class Lista<T> implements Collection<T> {
      */
     public void reverse() {
         // Tu codigo aqui
+
         return ;
     }
 
@@ -300,6 +301,10 @@ public class Lista<T> implements Collection<T> {
         String listaString = "";
         Nodo nodo = cabeza;
 
+        if(longitud == 0){
+            return " "; 
+        }
+        
         while(nodo != null){
             listaString = listaString + nodo.elemento + " -> ";
             nodo = nodo.siguiente;
@@ -310,9 +315,10 @@ public class Lista<T> implements Collection<T> {
 
     /**
      * Junta dos listas siempre y cuando sean del mismo tipo.
+     * @return 
      * 
      */
-    public void append(Lista<T> lista) {
+    public boolean append(Lista<T> lista) {
         // Tu codigo aqui
         if(this.equals(lista)){
             Nodo nodo = lista.cabeza;
@@ -321,6 +327,7 @@ public class Lista<T> implements Collection<T> {
                 nodo = nodo.siguiente;
             }
         }
+        return false;
     }
 
     /**
@@ -374,12 +381,30 @@ public class Lista<T> implements Collection<T> {
      */
     public void insert(int i, T elemento) {
         // Tu codigo aqui
+        if(i<0){
+            agregaInicio(elemento);
+        }else if(i>=this.longitud){
+            agregaFinal(elemento);
+        }else{	    
+            Nodo aux = this.cabeza;
+            Nodo nuevo = new Nodo(elemento);
+            int cont = 0;
+            while(aux!=null && cont!=i){
+            aux = aux.siguiente;
+            cont++;
+            }
+            nuevo.siguiente = aux;
+            nuevo.anterior = aux.anterior;	    
+            aux.anterior.siguiente = nuevo;
+            aux.anterior = nuevo;	    	    
+            this.longitud++;
+        }
         return ;
     }
 
     // Tu comentario
     public void mezclaAlternada(Lista<T> lista){
-        return;
+
     }
 
     /**
@@ -396,5 +421,10 @@ public class Lista<T> implements Collection<T> {
      */
     public IteradorLista<T> iteradorLista() {
         return new Iterador();
+    }
+
+
+    public char[] Union(Lista<Integer> segunda) {
+        return null;
     }
 }
