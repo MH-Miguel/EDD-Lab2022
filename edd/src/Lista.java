@@ -26,6 +26,8 @@ public class Lista<T> implements Collection<T> {
             siguiente = cabeza.siguiente;
         }
 
+        
+
         @Override
         public boolean hasNext(){
             return siguiente != null;
@@ -286,9 +288,61 @@ public class Lista<T> implements Collection<T> {
      * 
      */
     public void reverse() {
-        // Tu codigo aqui
+        Lista doubleLinkedList = new Lista<>();
 
-        return ;
+        Nodo aux = cola;
+        while(aux != null){
+            doubleLinkedList.agregaInicio(aux.elemento);
+            aux = aux.anterior;
+        }
+        clear();
+        for(int j = 0; j < doubleLinkedList.size(); j++){
+            agregaInicio((T) doubleLinkedList.get(j));
+        }
+    }
+
+    /**
+     * Obtiene el elemento en la posición <i>i</i>.
+     *
+     * @param i el índice a obtener elemento.
+     * @throws IndexOutOfBoundsException si el índice está fuera de rango.
+     */
+    public T get(int i) throws IndexOutOfBoundsException {
+
+        if( i < 0 || i >= longitud){
+            throw new IndexOutOfBoundsException();
+        }
+        if(isEmpty()){
+            return null;
+        }
+        if(i == 0){
+            return cabeza.elemento;
+        }
+        if(i == longitud-1){
+            return cola.elemento;
+        }
+        Nodo aux;
+        if(i <= longitud/2){
+            aux = cabeza;
+            for(int j = 0; j < i; j++){
+                aux = aux.siguiente;
+            }
+        }else{
+            aux = cola;
+            for(int j = longitud; j > i+1; j--){
+                aux = aux.anterior;
+            }
+        }
+        return aux.elemento;
+    }
+
+    /**
+     * Limpia la lista. Elimina todos los elementos.
+     */
+    public void clear() {
+        cabeza = null;
+        cola = null;
+        longitud = 0;
     }
 
     /**
@@ -302,7 +356,7 @@ public class Lista<T> implements Collection<T> {
         Nodo nodo = cabeza;
 
         if(longitud == 0){
-            return " "; 
+            return "";
         }
         
         while(nodo != null){
@@ -402,9 +456,30 @@ public class Lista<T> implements Collection<T> {
         return ;
     }
 
+    private Nodo getCabeza(){
+    return cabeza;
+    }
+    /* Método get para obtener a ultimo */
+    private Nodo getCola(){
+    return cola;
+    }
+    /* Método set para reasignar la cabeza */
+    private void setCabeza(Nodo cabeza){
+    this.cabeza = cabeza;
+    }
+    /* Método set para reasignar a ultimo */
+    private void setCola(Nodo cola){
+    this.cola = cola;
+    }    
     // Tu comentario
     public void mezclaAlternada(Lista<T> lista){
-
+        Nodo n = lista.getCabeza(); 
+	    int i = 1;                  
+ 	    while(n!=null){           
+	        insert(i,n.elemento);
+	        n = n.siguiente;      
+	        i = i+2;             
+	    }
     }
 
     /**

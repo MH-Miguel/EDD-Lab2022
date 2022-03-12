@@ -36,8 +36,10 @@ public class Practica1 {
 
     // Aqui va tu comentario
     public static void Interseccion(Lista<Integer> lista1,Lista<Integer> lista2) {
+
         if( lista1.size()>lista2.size() ){
             IteradorLista iteraLi = lista1.iteradorLista();
+            iteraLi.start();
             while(iteraLi.hasNext()){
                 Integer elemento = (Integer)iteraLi.next();
                 if(lista2.contains(elemento)==false){
@@ -53,6 +55,7 @@ public class Practica1 {
                 }
             }	    
         }
+
     }
 
 
@@ -188,7 +191,8 @@ public class Practica1 {
         segunda.add(10);
         
         
-        tercera = AgregaOrdenado(primera,9);
+        //tercera = AgregaOrdenado(primera,9);
+        //System.out.println(primera);
         if (!tercera.toString().equals(segunda.toString())) {
             System.out.println("1 el agregaOrdenado no funciona!");
         }
@@ -215,20 +219,13 @@ public class Practica1 {
         primera.add(2);
         primera.add(3);
         segunda.add(2);
+
         Interseccion(primera, segunda);
 
         if (!(primera.contains(2) && primera.size() == 1)) {
             System.out.println("1 La intersección no funciona!");
         }
         
-        
-
-
-
     }   
-   
-
-    
-
-
+       
 }
