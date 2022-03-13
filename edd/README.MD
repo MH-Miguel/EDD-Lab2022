@@ -1,5 +1,5 @@
-Nombres ->
-        ->
+Nombres ->Cruz Campos José Eduardo
+        ->Martínez Herrera Miguel Agustín
 
 compilar -> javac -d . src/*.java
 Ejecutar -> java Clases.Practica1

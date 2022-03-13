@@ -1,13 +1,34 @@
+package Clases;
 import java.util.Iterator;
 
 public class Practica1 {
     
 
 
-    // Aqui va tu comentario
+    /* 
+    *Dado un ejemplar de nuestra de Lista ordenada necesitamos agregamos un elemento
+    *de manera ordenada. 
+    *Tiene complejidad de Tiempo: O(n), ya que en el peor caso, nuestro metodo sólo recorrera la 
+    *lista una vez con nuestro iterador.
+    *Espacio: O(1), ya que no se crean listas nuevas, solo utilizamos el espacio que ya se tiene de 
+    *la lista, más un nodo que contiene el nuevo elemento que se añade.
+    */ 
     public static Lista<Integer> AgregaOrdenado(Lista<Integer> lista, int nuevo) {
+        int contador=0;
+        IteradorLista<Integer> iter = lista.iteradorLista();
+        while(iter.hasNext()){
+            
+            if(nuevo>=iter.next()){
+                //comparar= iter.next();
+                contador++;
+            }else{
+                lista.insert(contador+1, nuevo);
+                return lista;
+            }
+        }
+        lista.insert(contador+1, nuevo);
+        return lista;
         //Tu codigo aqui
-        return null;
     }
 
     // Aqui va tu comentario
@@ -190,9 +211,11 @@ public class Practica1 {
         segunda.add(9);
         segunda.add(10);
         
+       
         
-        //tercera = AgregaOrdenado(primera,9);
+        tercera = AgregaOrdenado(primera,9);
         //System.out.println(primera);
+        //System.out.println(tercera);
         if (!tercera.toString().equals(segunda.toString())) {
             System.out.println("1 el agregaOrdenado no funciona!");
         }
