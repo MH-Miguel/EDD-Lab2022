@@ -436,7 +436,7 @@ public class Lista<T> implements Collection<T> {
      */
     public void insert(int i, T elemento) {
         // Tu codigo aqui
-        if(i<0){
+        if(i<=0){
             agregaInicio(elemento);
         }else if(i>=this.longitud){
             agregaFinal(elemento);
