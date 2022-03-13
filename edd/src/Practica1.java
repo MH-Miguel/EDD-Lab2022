@@ -31,7 +31,18 @@ public class Practica1 {
         //Tu codigo aqui
     }
 
-    // Aqui va tu comentario
+    /**
+     *Dadas dos listas, se obtiene la union de sus elementos, sin importar el orden y
+     *quitando duplicados.
+     *Tiempo: O(n * m). Ya que la lista de tamaño mayor se recorre el número de elementos
+     *que contiene la segunda lista.
+     *Espacio: O(n + m). Ya que se utila el espacio de una de las listas más los nodos que ocupa
+     *la segunda lista.
+     *Creo que para mejorar el tiempo de ejecución, se tendría que utilizar una información extra 
+     *para crear un método que elimine elementos repetidos en un tiempo más eficaz y de esta manera 
+     *ya solo unir sus elementos. 
+     *con listas que no tengan ningun elemento repetido.
+    */
     public static void Union(Lista<Integer> lista1,Lista<Integer> lista2) {
         if( lista1.size()>lista2.size() ){
             IteradorLista iteraLu = lista1.iteradorLista();
@@ -55,7 +66,14 @@ public class Practica1 {
          return ;
     }
 
-    // Aqui va tu comentario
+    /**
+     *Dadas dos listas, se obtiene la interseccion de sus elementos.
+     *Tiempo: O(n * m). Ya que el iterador recorre la primera lista y 
+     * otro iterador recorre la segunda lista, dandonos un tiempo O(n+m)
+     *Espacio: O(n + m). Ya que se utila el espacio de una de las listas más los nodos que ocupa
+     *la segunda lista.
+     *Para mejorar el tiempo de ejecución O(n*m), se puede hacer como en nuestro método, que tiene O(m+n) 
+     */
     public static void Interseccion(Lista<Integer> lista1,Lista<Integer> lista2) {
 
         if( lista1.size()>lista2.size() ){

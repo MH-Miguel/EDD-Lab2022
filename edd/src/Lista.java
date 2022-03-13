@@ -286,7 +286,11 @@ public class Lista<T> implements Collection<T> {
     
     /**
      * Metodo que invierte el orden de la lista.
-     * 
+     * Tiempo: O(n) El método cumple con este tiempo, ya que el método va recorriendo la lista 
+     * de atras para delante mientras va reasignando para invertir la lista.
+     * Espacio: O(1) Cumple con el espacio constante ya que se utiliza una sola lista
+     * a la cual le va sacando sus elementos con un nodo auxiliar y los asigna en un orden invertido
+     * en esa misma lista.
      */
     public void reverse() {
         Lista doubleLinkedList = new Lista<>();
@@ -420,13 +424,13 @@ public class Lista<T> implements Collection<T> {
     /**
      * Inserta un elemento en un índice explícito.
      *
-     * Si el índice es menor que cero, el elemento se agrega al inicio de la
+     * Si el índice es menor  igual que cero, el elemento se agrega al inicio de la
      * lista. Si el índice es mayor o igual que el número de elementos en la
      * lista, el elemento se agrega al fina de la misma. En otro caso, después
      * de mandar llamar el método, el elemento tendrá el índice que se
      * especifica en la lista.
      * 
-     * @param i        el índice dónde insertar el elemento. Si es menor que 0 el
+     * @param i        el índice dónde insertar el elemento. Si es menor o igual que 0 el
      *                 elemento se agrega al inicio, y si es mayor o igual que el
      *                 número
      *                 de elementos en la lista se agrega al final.
@@ -438,8 +442,10 @@ public class Lista<T> implements Collection<T> {
         // Tu codigo aqui
         if(i<=0){
             agregaInicio(elemento);
+            this.longitud++;
         }else if(i>=this.longitud){
             agregaFinal(elemento);
+            this.longitud++;
         }else{	    
             Nodo aux = this.cabeza;
             Nodo nuevo = new Nodo(elemento);
@@ -472,7 +478,13 @@ public class Lista<T> implements Collection<T> {
     private void setCola(Nodo cola){
     this.cola = cola;
     }    
-    // Tu comentario
+    /**
+     *Dadas 2 Listas, necesitamos unirlas de manera alternada, un elemento de la primera lista
+     *y despues uno de la segunda, y así sucesivamente.
+     *Tiempo: O(n + m). Cumple este tiempo ya que solo se recorren cada una de las listas máximo
+     *una vez.  
+     *Espacio: O(1). Se ocupa solo el espacio de las listas. 
+     */
     public void mezclaAlternada(Lista<T> lista){
         Nodo n = lista.getCabeza(); 
 	    int i = 1;                  
